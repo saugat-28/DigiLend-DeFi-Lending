@@ -28,3 +28,6 @@
 'make sure the wallet is connected';
 'see list of borrowers';
 'be able to lend via P2P';
+
+
+// LoanLending deployed to: 0x8F8D6B251f1c6f0133b59b69219716E6e0BF17a3
