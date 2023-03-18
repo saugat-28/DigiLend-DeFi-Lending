@@ -30,7 +30,8 @@ module.exports = {
     sepolia: {
       url: ALCHEMY_API_KEY_URL,
       accounts: [`0x${SEPOLIA_PRIVATE_KEY}`],
-      gasPrice: 8000000000
+      gasPrice: 8000000000,
+      allowUnlimitedContractSize: true
     }
   }
 };

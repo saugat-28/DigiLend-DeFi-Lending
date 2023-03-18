@@ -83,6 +83,7 @@ const BorrowForm = () => {
       //console.log('sent');
     } catch (err) {
       console.error(err);
+      console.log(err);
       alert(err.message);
       setInterests(false);
       setDay(false);
