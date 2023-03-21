@@ -93,6 +93,7 @@ const LendingTable = () => {
       //console.log('filteredData', filteredAllData);
       //setAllData(filteredAllData);
       setBorrowed(true);
+      console.log('Borrowed', borrowed);
     } catch (err) {
       console.error(err);
     }
@@ -111,11 +112,14 @@ const LendingTable = () => {
     const getcryptoBorrowerInfo = async () => {
       try {
         let addressValue = await getCryptoBorrowerAddresses();
-        let valuePrice = await getETHPrice();
+        console.log('addressValue', addressValue);
+        let valuePrice = await getETHPrice(); // ISSUE HERE
+        console.log('valuePrice', valuePrice);
         return Promise.all(
           addressValue.map(async singleAddress => {
             const cryptoBorrowerInfo = await contract.getBorrower(singleAddress);
             const allCryptoBorrowersInfo = await Promise.all(cryptoBorrowerInfo).then(allResults => {
+              console.log("All Results", allResults);
               return createData(
                 /**id */
                 parseInt(allResults[6]),
@@ -146,10 +150,12 @@ const LendingTable = () => {
                 Number(ethers.utils.formatEther(allResults[3]) * valuePrice).toFixed(2)
               );
             });
+            console.log(allCryptoBorrowersInfo);
             return allCryptoBorrowersInfo;
           })
         );
       } catch (err) {
+        console.log('ERROR');
         console.error(err);
       }
     };
@@ -167,6 +173,7 @@ const LendingTable = () => {
       isCancelled = false;
     };
   }, []);
+
   const LendingModal = () => {
     const classes = useStyles();
     const lend = async e => {
@@ -175,7 +182,6 @@ const LendingTable = () => {
         from: address,
         value: ethers.utils.parseUnits(amountToLend.toString(), 'ether')
       });
-      //console.log()
       setShowLendModal(!showlendModal);
     };
     return (
@@ -339,7 +345,7 @@ const LendingTable = () => {
                             Lend
                           </Button>
                         )}*/}
-                        {row.AmountRemaining == 0.0 ? (
+                        {row.AmountRemaining === 0.0 ? (
                           <Button variant="contained" disabled>
                             Lend
                           </Button>
