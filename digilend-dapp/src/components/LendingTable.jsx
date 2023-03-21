@@ -112,14 +112,11 @@ const LendingTable = () => {
     const getcryptoBorrowerInfo = async () => {
       try {
         let addressValue = await getCryptoBorrowerAddresses();
-        console.log('addressValue', addressValue);
-        let valuePrice = await getETHPrice(); // ISSUE HERE
-        console.log('valuePrice', valuePrice);
+        let valuePrice = await getETHPrice(); 
         return Promise.all(
           addressValue.map(async singleAddress => {
             const cryptoBorrowerInfo = await contract.getBorrower(singleAddress);
             const allCryptoBorrowersInfo = await Promise.all(cryptoBorrowerInfo).then(allResults => {
-              console.log("All Results", allResults);
               return createData(
                 /**id */
                 parseInt(allResults[6]),
@@ -150,12 +147,10 @@ const LendingTable = () => {
                 Number(ethers.utils.formatEther(allResults[3]) * valuePrice).toFixed(2)
               );
             });
-            console.log(allCryptoBorrowersInfo);
             return allCryptoBorrowersInfo;
           })
         );
       } catch (err) {
-        console.log('ERROR');
         console.error(err);
       }
     };
