@@ -167,6 +167,7 @@ const LendingTable = () => {
     return () => {
       isCancelled = false;
     };
+    // eslint-disable-next-line
   }, []);
 
   const LendingModal = () => {
@@ -360,7 +361,7 @@ const LendingTable = () => {
                             Withdraw
                           </Button>
                         )}
-                        {/*row.amountRaised <= 0 && <DeleteIcon sx={{ cursor: 'pointer', color: 'red', marginLeft: 2 }} />*/}
+                        {/* {row.amountRaised <= 0 && <DeleteIcon sx={{ cursor: 'pointer', color: 'red', marginLeft: 2 }} />} */}
                       </TableCell>
                     </TableRow>
                   ))

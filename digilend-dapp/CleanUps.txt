@@ -1,0 +1,25 @@
+// Lending Page Side Panel
+
+ <Hidden lgDown>
+          <section
+            style={{
+              //flexBasis: '20%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#240b36',
+              height: '100vh'
+            }}
+          >
+            <Box sx={{ justifyContent: 'space-between', height: '100%', marginTop: 'auto' }}>
+              <LendSections title="crypto" selected Icon={<PaidIcon />} />
+              <LendSections title="mortgage" Icon={<HomeIcon />} />
+              <LendSections title="electronics" Icon={<CableIcon />} />
+              <LendSections title="automotive" Icon={<CarRentalIcon />} />
+              <LendSections title="gardening" Icon={<YardIcon />} />
+              <LendSections title="CountryFinancialAid" Icon={<CreditCardIcon />} />
+              <LendSections title="household" Icon={<BedroomParentIcon />} />
+            </Box>
+          </section>
+        </Hidden>
