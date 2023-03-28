@@ -112,9 +112,12 @@ const LendingTable = () => {
     const getcryptoBorrowerInfo = async () => {
       try {
         let addressValue = await getCryptoBorrowerAddresses();
-        let value = await getETHPrice(); 
+        if (addressValue.length === 0) {
+          setAllData(null);
+          return;
+        }
+        let value = await getETHPrice();
         let valuePrice = value / 1000000000
-        console.log(valuePrice);
         return Promise.all(
           addressValue.map(async singleAddress => {
             const cryptoBorrowerInfo = await contract.getBorrower(singleAddress);
@@ -368,9 +371,11 @@ const LendingTable = () => {
                     </TableRow>
                   ))
                 ) : (
-                  <Box>
-                    <Typography align="center">No borrowers yet</Typography>
-                  </Box>
+                  <TableRow>
+                    <TableCell>
+                      No borrowers yet
+                    </TableCell>
+                  </TableRow>
                 )}
               </TableBody>
             </Table>

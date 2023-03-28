@@ -25,7 +25,6 @@ const useStyles = makeStyles(theme => ({
 }));
 const Homepage = () => {
   const state = useSelector(state => state.connectWallet.walletConnected);
-  console.log('state is', state);
   const classes = useStyles();
   let navigate = useNavigate();
   return (
