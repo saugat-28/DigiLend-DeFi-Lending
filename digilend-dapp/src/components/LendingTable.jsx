@@ -112,7 +112,9 @@ const LendingTable = () => {
     const getcryptoBorrowerInfo = async () => {
       try {
         let addressValue = await getCryptoBorrowerAddresses();
-        let valuePrice = await getETHPrice(); 
+        let value = await getETHPrice(); 
+        let valuePrice = value / 1000000000
+        console.log(valuePrice);
         return Promise.all(
           addressValue.map(async singleAddress => {
             const cryptoBorrowerInfo = await contract.getBorrower(singleAddress);

@@ -9,7 +9,7 @@ const Lendingpage = () => {
         height: '100%'
         /*backgroundColor: 'green'*/
       }}
-    >l̥
+    >
       <Navbar />
       <LendigTable/>
     </div>

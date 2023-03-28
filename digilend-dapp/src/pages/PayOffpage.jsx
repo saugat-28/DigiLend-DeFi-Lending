@@ -10,9 +10,7 @@ const PayOffpage = () => {
   const address = useSelector(state => state.connectWallet.address);
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const contract = new ethers.Contract(LOANLENDING_CONTRACT_ADDRESS, abi, provider.getSigner(address));
-  const [addressIsBorrower, setAddressIsBorrower] = useState(null);
   const [addressInfo, setAddressInfo] = useState([]);
-  const [borrowers, setBorrowers] = useState([]);
   const [error, setError] = useState('');
   function createData(loanDuration, returnAmount, lender) {
     return {
@@ -40,6 +38,7 @@ const PayOffpage = () => {
       }
     };
     getAllBorrowers();
+    // eslint-disable-next-line 
   }, []);
   return (
     <div>
@@ -52,7 +51,7 @@ const PayOffpage = () => {
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
             <Box sx={{ width: '300px', backgroundColor: 'black', padding: 10, borderRadius: '30px' }}>
               <Typography sx={{ color: 'white' }} gutterBottom variant="h2">
-                Error!!
+                Ahhh snap!!
               </Typography>
               <Typography sx={{ color: 'gray' }} variant="h6">
                 {error}
