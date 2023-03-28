@@ -4,7 +4,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggle } from '../features/toggleMenuSlice';
-import DrawerComponent from './DrawerComponent';
 import { changeAddress } from '../features/ConnectWalletSlice';
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -28,6 +27,7 @@ const Navbar = () => {
         dispatch(changeAddress(a[0]));
       });
     }
+    // eslint-disable-next-line 
   }, []);
   return (
     <AppBar position="sticky" elevation={1} sx={{ background: '#240b36' }}>
@@ -84,7 +84,6 @@ const Navbar = () => {
             </Typography>
           </Box>
         </Toolbar>
-        <DrawerComponent />
       </Container>
     </AppBar>
   );
