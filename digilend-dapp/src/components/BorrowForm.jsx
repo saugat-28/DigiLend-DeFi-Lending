@@ -74,6 +74,7 @@ const BorrowForm = () => {
       });
       // tx.wait();
       console.log(tx);
+      alert("Your Borrow Request will be live soon!");
       setInterests(false);
       setDay(false);
       setCollateral('');
